@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-//MARK: - Animated Page Views Block
-
 //MARK: - Welcome Page (Page 0)
 struct WelcomePageView: View {
     let page: OnboardingPage
@@ -43,6 +41,7 @@ struct WelcomePageView: View {
                     .font(.title).fontWeight(.bold).foregroundColor(.white)
                     .opacity(showTitle ? 1 : 0)
                     .offset(y: showTitle ? 0 : 20)
+                    .multilineTextAlignment(.center)
 
                 Text(page.description)
                     .font(.headline).foregroundColor(.gray) // Slightly larger desc
@@ -483,7 +482,13 @@ struct OnboardingContainerView: View {
               TipsPageView(page: pageData, accentColor: accentColor)
          case 4: // Motivation
               MotivationPageView(page: pageData, accentColor: accentColor)
-         default: // Last Page / Default
+         // --- NEW CASE FOR PERSONALIZATION ---
+         case 5: // Personalization (Index is now 5)
+              PersonalizationPageView(page: pageData, accentColor: accentColor)
+         // --- ADJUSTED CASE FOR FINAL PAGE ---
+         case 6: // Last Page / Ready to Start? (Index is now 6)
+              GenericPageView(page: pageData, accentColor: accentColor)
+         default: // Fallback (shouldn't happen with correct indices)
               GenericPageView(page: pageData, accentColor: accentColor)
          }
     }
@@ -576,6 +581,11 @@ struct OnboardingData {
             description: "Connect with the community, share your journey, and lift each other up."
         ),
         OnboardingPage(
+                   imageName: nil, // Using custom view, no simple icon needed here
+                   title: "Tell Us About Yourself", // Title for the page
+                   description: "Personalize your experience for better recommendations." // Optional description
+               ),
+        OnboardingPage(
             imageName: "figure.run", // Final simple icon
             title: "Ready to Start?",
             description: "Your ultimate fitness companion awaits. Let's crush those goals!"
@@ -612,4 +622,3 @@ struct PlanningPageView_Previews: PreviewProvider {
      }
 }
 
-// ... (Add previews for other pages similarly) ...

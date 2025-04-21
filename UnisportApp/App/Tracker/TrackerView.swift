@@ -23,23 +23,24 @@ struct TrackerView: View {
         ZStack { // Use ZStack to layer main content and overlays
             //MARK: - Main Scrollable Content
             ScrollView {
+                HStack {
+                    Text("My Activity")
+                        .font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                    Spacer()
+                    (profileViewModel.avatarImage ?? Image(systemName: "person.crop.circle.fill")) // Use loaded image or placeholder
+                        .resizable()
+                        .aspectRatio(contentMode: .fill) // Fill circle
+                        .frame(width: 35, height: 35)
+                        .clipShape(Circle())
+                        .background( // Background for placeholder
+                            Circle().fill(Color.gray.opacity(0.5))
+                        )
+                        .overlay(Circle().stroke(Color.white.opacity(0.1), lineWidth: 1))
+                }
+                .padding(.horizontal).padding(.top)
+                
                 VStack(alignment: .leading, spacing: 25) {
-                    // Header (Assuming it's part of a NavigationView elsewhere or static)
-                    HStack {
-                        Text("My Activity")
-                            .font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
-                        Spacer()
-                        (profileViewModel.avatarImage ?? Image(systemName: "person.crop.circle.fill")) // Use loaded image or placeholder
-                            .resizable()
-                            .aspectRatio(contentMode: .fill) // Fill circle
-                            .frame(width: 35, height: 35)
-                            .clipShape(Circle())
-                            .background( // Background for placeholder
-                                Circle().fill(Color.gray.opacity(0.5))
-                            )
-                            .overlay(Circle().stroke(Color.white.opacity(0.1), lineWidth: 1))
-                    }
-                    .padding(.horizontal).padding(.top)
+                   
                     
                     // Activity Board Section (Uses the updated ActivityBoardView)
                     ActivityBoardView(
@@ -94,16 +95,7 @@ struct TrackerView: View {
                     .zIndex(1) // Ensure background is behind the foreground views
             }
             
-            if viewModel.showAddWorkout {
-                AddWorkoutView(
-                    onDismiss: viewModel.dismissAddWorkout,
-                    onSave: viewModel.saveWorkout // Pass the save function directly
-                )
-                .padding(.horizontal, 20) // Add padding so it doesn't touch edges
-                .padding(.vertical, 50) // Adjust vertical padding
-                .transition(.move(edge: .bottom).combined(with: .opacity)) // Animation from bottom
-                .zIndex(2) // Ensure AddWorkout is above the overlay background
-            }
+           
             
             if let workout = viewModel.selectedWorkoutForDetail, viewModel.showWorkoutDetail {
                 WorkoutDetailView(
@@ -119,6 +111,29 @@ struct TrackerView: View {
         .animation(.easeInOut(duration: 0.3), value: viewModel.showAddWorkout) // Animate changes
         .animation(.easeInOut(duration: 0.3), value: viewModel.showWorkoutDetail)
         .preferredColorScheme(.dark) // Apply dark mode preference
+        .onAppear {
+            if !UserDefaults.standard.bool(forKey: "firstTraining") {
+                withAnimation(.spring(duration: 0.5)) {
+                    viewModel.showAddWorkout.toggle()
+                }
+                UserDefaults.standard.setValue(true, forKey: "firstTraining")
+            }
+            
+        }
+        .overlay {
+            if viewModel.showAddWorkout {
+                AddWorkoutView(
+                    onDismiss: viewModel.dismissAddWorkout,
+                    onSave: viewModel.saveWorkout // Pass the save function directly
+                )
+                .padding(.horizontal, 20) // Add padding so it doesn't touch edges
+                .padding(.vertical, 50) // Adjust vertical padding
+                .transition(.move(edge: .bottom).combined(with: .opacity)) // Animation from bottom
+                .zIndex(2) // Ensure AddWorkout is above the overlay background
+                .animation(.easeInOut(duration: 0.3), value: viewModel.showAddWorkout) // Animate changes
+                .animation(.easeInOut(duration: 0.3), value: viewModel.showWorkoutDetail)
+            }
+        }
     }
 }
 

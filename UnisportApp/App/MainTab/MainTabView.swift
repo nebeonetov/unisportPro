@@ -30,7 +30,7 @@ struct MainTabView: View {
                 case .tracker:
                     TrackerView()
                 case .tips:
-                    TipsView()
+                    MiniGamesView()
                 case .plans:
                     PlansView()
                 case .motivation:
@@ -55,7 +55,7 @@ struct MainTabView: View {
 //MARK: - Tab Enum
 enum Tab: String, CaseIterable {
     case tracker = "Tracker"
-    case tips = "Tips"
+    case tips = "Relax"
     case plans = "Plans"
     case motivation = "Motivation"
     case profile = "Profile"
@@ -63,7 +63,7 @@ enum Tab: String, CaseIterable {
     var iconName: String {
         switch self {
         case .tracker: return "chart.bar"
-        case .tips: return "lightbulb"
+        case .tips: return "trophy"
         case .plans: return "flag"
         case .motivation: return "flame"
         case .profile: return "person"
@@ -152,8 +152,8 @@ struct MainTabView_Previews: PreviewProvider {
     }
 }
 
-struct TrackerView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrackerView()
-    }
-}
+//struct TrackerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrackerView()
+//    }
+//}

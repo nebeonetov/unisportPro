@@ -21,25 +21,27 @@ struct PlansView: View {
     var body: some View {
         NavigationView { // Keep this NavigationView
             ScrollView {
-                VStack(alignment: .leading, spacing: 25) {
-                    HStack {
-                        Text("Plans")
-                            .font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
-                        Spacer()
-                        if let _ = viewModel.activePlan {
-                            
-                        } else {
-                            Button {
-                                showingCreatePlan = true
-                            } label: {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.title2)
-                                    .foregroundColor(accentColor)
-                            }
-                        }
+                HStack {
+                    Text("Plans")
+                        .font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                    Spacer()
+                    if let _ = viewModel.activePlan {
                         
+                    } else {
+                        Button {
+                            showingCreatePlan = true
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.title2)
+                                .foregroundColor(accentColor)
+                        }
                     }
-                    .padding(.horizontal).padding(.top)
+                    
+                }
+                .padding(.horizontal).padding(.top)
+                
+                VStack(alignment: .leading, spacing: 25) {
+                   
                     if let plan = viewModel.activePlan {
                         ActivePlanCard(plan: plan, backgroundColor: cardBackgroundColor, accentColor: accentColor)
                             .padding(.horizontal)

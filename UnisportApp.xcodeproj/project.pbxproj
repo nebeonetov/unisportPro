@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		644391882DB66B27006F8AEE /* PersonalizationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644391872DB66B27006F8AEE /* PersonalizationPageView.swift */; };
+		6443918F2DB67261006F8AEE /* MiniGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6443918E2DB67261006F8AEE /* MiniGames.swift */; };
 		64AAB3BF2DAD627100B96CDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AAB3BE2DAD627100B96CDA /* AppDelegate.swift */; };
 		64AAB3C12DAD627100B96CDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AAB3C02DAD627100B96CDA /* SceneDelegate.swift */; };
 		64AAB3C32DAD627100B96CDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AAB3C22DAD627100B96CDA /* ViewController.swift */; };
@@ -74,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		644391872DB66B27006F8AEE /* PersonalizationPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationPageView.swift; sourceTree = "<group>"; };
+		6443918E2DB67261006F8AEE /* MiniGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGames.swift; sourceTree = "<group>"; };
 		64AAB3BB2DAD627100B96CDA /* UnisportApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnisportApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AAB3BE2DAD627100B96CDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64AAB3C02DAD627100B96CDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6443918D2DB67256006F8AEE /* MiniGames */ = {
+			isa = PBXGroup;
+			children = (
+				6443918E2DB67261006F8AEE /* MiniGames.swift */,
+			);
+			path = MiniGames;
+			sourceTree = "<group>";
+		};
 		64AAB3B22DAD627100B96CDA = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +193,7 @@
 		64AAB3D32DAD632800B96CDA /* App */ = {
 			isa = PBXGroup;
 			children = (
+				6443918D2DB67256006F8AEE /* MiniGames */,
 				64E83A922DB103C400DF4042 /* Starting */,
 				64E83A842DB0F88700DF4042 /* Settings */,
 				64E83A832DB0F87F00DF4042 /* Onboardnig */,
@@ -321,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				64E83A872DB0F91400DF4042 /* WelcomePageView.swift */,
+				644391872DB66B27006F8AEE /* PersonalizationPageView.swift */,
 			);
 			path = Onboardnig;
 			sourceTree = "<group>";
@@ -446,6 +460,7 @@
 				64E83A7A2DAFFD7C00DF4042 /* TrackerViewModel.swift in Sources */,
 				64AAB3F22DAD7A6F00B96CDA /* TipsView.swift in Sources */,
 				64AAB4152DAD860E00B96CDA /* MotivationOnboardingView.swift in Sources */,
+				6443918F2DB67261006F8AEE /* MiniGames.swift in Sources */,
 				64E83A882DB0F91400DF4042 /* WelcomePageView.swift in Sources */,
 				64AAB4022DAD81E600B96CDA /* CreatePlan.swift in Sources */,
 				64AAB3EF2DAD6D0600B96CDA /* AddWorkoutView.swift in Sources */,
@@ -473,6 +488,7 @@
 				64AAB3EC2DAD6B9900B96CDA /* UpcomingPlansView.swift in Sources */,
 				64AAB3D62DAD65D700B96CDA /* LoginView.swift in Sources */,
 				64AAB3F92DAD815800B96CDA /* RealmModel.swift in Sources */,
+				644391882DB66B27006F8AEE /* PersonalizationPageView.swift in Sources */,
 				64AAB4172DAD862000B96CDA /* MotivationFeedView.swift in Sources */,
 				64AAB4002DAD81CD00B96CDA /* PlanDayEntry.swift in Sources */,
 				64AAB40A2DAD855A00B96CDA /* TerminatePlanButton.swift in Sources */,
@@ -646,12 +662,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.unisportpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -683,12 +700,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.unisportpro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

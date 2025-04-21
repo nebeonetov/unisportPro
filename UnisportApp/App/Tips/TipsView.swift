@@ -12,41 +12,6 @@ struct TipsView: View {
 
     //MARK: - Mock Data
     static let allTips: [Tip] = [
-            // Featured
-            Tip(
-                title: "Sprint Training Secrets",
-                subtitle: "Explode off the line & maintain top speed with pro techniques.", // Engaging subtitle
-                authorName: "Anton", authorTitle: "Olympic Champion", authorAvatarPlaceholder: "antonImage",
-                contentImagePlaceholder: "tip_sprint_start", // Image identifier
-                category: .running, isFeatured: true,
-                detailedContent: """
-                Unlock explosive speed! This guide covers the critical phases of sprinting: optimizing your block start for maximum acceleration, refining stride length and frequency for top speed maintenance, and specific drills (like resisted sprints and plyometrics) to build raw power. Learn common mistakes and how to correct them for faster times. Includes tips on race day mental prep.
-                """,
-                imagePrompt: "Dynamic action photo of a sprinter exploding from the starting blocks on a professional athletics track, muscles tense, focused expression, motion blur indicating speed, low angle view, bright stadium lighting. Style: Sports Photography."
-            ),
-            Tip(
-                title: "Core Stability Essentials",
-                subtitle: "Build injury resistance & power transfer with fundamental core exercises.", // Engaging subtitle
-                authorName: "Coach Mike", authorTitle: "Strength Specialist", authorAvatarPlaceholder: "mikeImage",
-                contentImagePlaceholder: "tip_core_plank", // Image identifier
-                category: .strength, isFeatured: true,
-                detailedContent: """
-                Build a foundation of steel! Understand why a stable core is crucial for injury prevention and transferring power in *all* sports. This guide details key stability exercises beyond basic crunches: master the perfect plank (and variations like side planks), learn anti-rotation movements like the Pallof press, and incorporate loaded carries (e.g., farmer's walks) to challenge your core in functional ways. Includes progression tips for all levels.
-                """,
-                imagePrompt: "Clear photo of an athlete demonstrating perfect form during a plank exercise on a gym mat, core engaged, straight line from head to heels, focused expression, gym environment in the background (weights, equipment). Style: Fitness Photography."
-            ),
-            Tip(
-                title: "Marathon Fueling",
-                subtitle: "Master nutrition before, during, & after to conquer the distance.", // Engaging subtitle
-                authorName: "Dr. Sarah", authorTitle: "Sports Nutritionist", authorAvatarPlaceholder: "sarahImage",
-                contentImagePlaceholder: "tip_marathon_fuel", // Image identifier
-                category: .nutrition, isFeatured: true,
-                detailedContent: """
-                Fuel your marathon success! Learn exactly what to eat the night before and morning of your long run for sustained energy (complex carbs, moderate protein). Discover effective strategies for fueling *during* the run: energy gels, chews, or real food options, and how often to take them based on duration. Master post-run recovery nutrition to replenish glycogen stores and repair muscle (protein + carbs within the crucial 1-2 hour window). Hydration is key - tips included!
-                """,
-                imagePrompt: "A vibrant flat lay composition showing marathon fueling essentials: a bowl of pasta, a banana, energy gels, electrolyte tablets, a running watch, and a water bottle, arranged neatly on a clean surface. Bright, natural lighting. Style: Food/Lifestyle Photography."
-            ),
-
             // Latest
             Tip(
                 title: "Nutrition Guide for Athletes",

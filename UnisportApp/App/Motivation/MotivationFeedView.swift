@@ -24,6 +24,33 @@ struct MotivationFeedView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                HStack {
+                    HStack(spacing: 10) { // Add spacing
+                        Text("Motivation")
+                            .font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+
+
+                        Button {
+                            showOnboarding = true // Trigger onboarding manually
+                        } label: {
+                            Image(systemName: "questionmark.circle.fill")
+                                .font(.title3) // Adjust size
+                                .foregroundColor(secondaryTextColor)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Button {
+                        showShareSheet = true // Show share sheet
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title2)
+                            .foregroundColor(accentColor)
+                    }
+                }
+                .padding(.horizontal).padding(.top)
+                
                 LazyVStack(spacing: 15) {
                     ForEach(quotes) { quote in
                         QuoteCardView(
@@ -39,36 +66,12 @@ struct MotivationFeedView: View {
             }
             .background(backgroundColor.ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline) // Keep title inline
-            .toolbar {
-                 //MARK: - Navigation Bar Content
-                 ToolbarItem(placement: .navigationBarLeading) {
-                     HStack(spacing: 10) { // Add spacing
-                         Text("Motivation")
-                             .font(.title)
-                             .fontWeight(.bold)
-                             .foregroundColor(.white)
-
-                         Button {
-                             showOnboarding = true // Trigger onboarding manually
-                         } label: {
-                             Image(systemName: "questionmark.circle.fill")
-                                 .font(.title3) // Adjust size
-                                 .foregroundColor(secondaryTextColor)
-                         }
-                     }
-                 }
-                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showShareSheet = true // Show share sheet
-                    } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.title2)
-                            .foregroundColor(accentColor)
-                    }
-                 }
-            }
+          
             .fullScreenCover(isPresented: $showOnboarding) {
                 MotivationOnboardingView(isPresented: $showOnboarding)
+                    .onDisappear {
+                        showShareSheet.toggle()
+                    }
             }
              .sheet(isPresented: $showShareSheet) {
                 ShareMotivationView(isPresented: $showShareSheet)
@@ -150,19 +153,19 @@ struct MotivationFeedView_Previews: PreviewProvider {
     }
 }
 
-struct MotivationOnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        MotivationOnboardingView(isPresented: .constant(true))
-            .preferredColorScheme(.dark)
-    }
-}
-
-struct ShareMotivationView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShareMotivationView(isPresented: .constant(true))
-            .preferredColorScheme(.dark)
-    }
-}
+//struct MotivationOnboardingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MotivationOnboardingView(isPresented: .constant(true))
+//            .preferredColorScheme(.dark)
+//    }
+//}
+//
+//struct ShareMotivationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ShareMotivationView(isPresented: .constant(true))
+//            .preferredColorScheme(.dark)
+//    }
+//}
 
 // Preview for the overlay
 struct SubmissionStatusOverlayView_Previews: PreviewProvider {

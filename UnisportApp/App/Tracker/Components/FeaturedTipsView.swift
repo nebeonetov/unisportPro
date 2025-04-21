@@ -10,6 +10,15 @@
 
 import SwiftUI
 
+extension View {
+    func size() -> CGSize {
+        guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return .zero
+        }
+        return window.screen.bounds.size
+    }
+}
+
 struct FeaturedTipsView: View {
     // Use the sampleFeatures defined above
     @State var features: [Feature] = []
@@ -120,7 +129,70 @@ struct FeaturedTipsView: View {
             Train smarter, not just harder. Explore mindfulness techniques to bring full awareness to your workouts. Learn how focusing on breath and body sensations can improve form, prevent injuries, and make training more enjoyable. Discover strategies to manage workout boredom and stay motivated long-term.
             """,
             imagePrompt: "Serene image of a person meditating or doing yoga outdoors (park or mountain view), eyes closed, calm expression, soft morning light filtering through trees or clouds. Focus on the person's peaceful state amidst nature. Style: Wellness Photography."
-           )
+           ),
+        Feature(
+            imageName: "tip_marathon_fuel",
+            title: "Marathon Fueling",
+            subtitle: "Master nutrition before, during, & after to conquer the distance.",
+            detailedContent: """
+            Fuel your marathon success! Learn exactly what to eat the night before and morning of your long run for sustained energy (complex carbs, moderate protein). Discover effective strategies for fueling *during* the run: energy gels, chews, or real food options, and how often to take them based on duration. Master post-run recovery nutrition to replenish glycogen stores and repair muscle (protein + carbs within the crucial 1-2 hour window). Hydration is key - tips included!
+            """,
+            imagePrompt: "Serene image of a person meditating or doing yoga outdoors (park or mountain view), eyes closed, calm expression, soft morning light filtering through trees or clouds. Focus on the person's peaceful state amidst nature. Style: Wellness Photography."
+        ),
+        Feature(
+            imageName: "tip_core_plank",
+            title: "Core Stability Essentials",
+            subtitle: "Build injury resistance & power transfer with fundamental core exercises.",
+            detailedContent: """
+            Build a foundation of steel! Understand why a stable core is crucial for injury prevention and transferring power in *all* sports. This guide details key stability exercises beyond basic crunches: master the perfect plank (and variations like side planks), learn anti-rotation movements like the Pallof press, and incorporate loaded carries (e.g., farmer's walks) to challenge your core in functional ways. Includes progression tips for all levels.
+            """,
+            imagePrompt: ""
+           ),
+        Feature(
+            imageName: "tip_sprint_start",
+            title: "Sprint Training Secrets",
+            subtitle: "Explode off the line & maintain top speed with pro techniques.",
+            detailedContent: """
+            Unlock explosive speed! This guide covers the critical phases of sprinting: optimizing your block start for maximum acceleration, refining stride length and frequency for top speed maintenance, and specific drills (like resisted sprints and plyometrics) to build raw power. Learn common mistakes and how to correct them for faster times. Includes tips on race day mental prep.
+            """,
+            imagePrompt: ""
+           ),
+        Feature(
+                imageName: "tip_athlete_meal_prep",
+                title: "Nutrition Guide for Athletes",
+                subtitle: "Timing is everything: optimize pre & post workout meals for results.",
+                detailedContent: """
+                Optimize your workouts with smart nutrition timing! This guide explains the 'anabolic window' myth and reality. Learn ideal pre-workout meals (1-3 hours before) focusing on digestible carbs for energy without stomach upset. Discover post-workout essentials (within 1-2 hours) combining quality protein for muscle repair and complex carbs for glycogen replenishment. Includes sample meal ideas for strength vs. endurance training.
+                """,
+                imagePrompt: "Photo of a well-organized meal prep container showing a balanced athlete's meal: grilled chicken breast or tofu, quinoa or sweet potato, and steamed broccoli/peppers. Top-down view, clean presentation. Style: Food Photography."
+            ),
+            Feature(
+                imageName: "tip_foam_rolling",
+                title: "Recovery Techniques",
+                subtitle: "Speed up recovery & prevent overtraining with these key methods.",
+                detailedContent: """
+                Recovery is where gains happen! Explore techniques beyond just rest days. Learn the benefits of active recovery (like light cycling or swimming) to reduce muscle soreness, the crucial role of quality sleep (aim for 7-9 hours), basic foam rolling and massage gun techniques to release muscle tightness (myofascial release), and simple stress management practices (like meditation) that significantly impact physical recovery.
+                """,
+                imagePrompt: "Photo of an athlete using a foam roller or massage gun on their leg muscles after a workout, focused but relaxed expression, comfortable athletic wear, in a bright gym or home fitness area. Style: Fitness/Wellness Photography."
+            ),
+            Feature(
+                imageName: "tip_leg_squat",
+                title: "Building Leg Strength",
+                subtitle: "Master compound lifts like squats & deadlifts for a powerful base.",
+                detailedContent: """
+                Develop powerful legs for improved performance and injury resilience across all activities. This guide focuses on mastering fundamental compound movements: Squats (Back, Front, Goblet), Deadlifts (Conventional, Romanian), and Lunges (Forward, Reverse, Lateral). Learn the critical importance of proper form for safety and maximizing muscle activation. Understand progressive overload principles to apply for continuous strength gains.
+                """,
+                imagePrompt: "Side profile action shot of an athlete performing a barbell back squat or deadlift with excellent form in a well-equipped gym, emphasizing leg and glute muscles under tension. Strong, focused lighting. Style: Fitness Photography."
+            ),
+            Feature(
+                imageName: "tip_running_form",
+                title: "Improving Running Form",
+                subtitle: "Run smoother, faster, & reduce injury risk with simple technique cues.",
+                detailedContent: """
+                Run smoother, faster, and with fewer injuries! Learn key elements of efficient running form by focusing on actionable cues: maintaining an upright posture ('run tall'), optimizing your foot strike (aiming for midfoot landing under your center of gravity), increasing cadence slightly (more steps per minute, often around 170-180), and using a relaxed, compact arm swing. Includes simple drills like 'butt kicks' and 'high knees' to incorporate into warm-ups.
+                """,
+                imagePrompt: "Side view photo of a runner mid-stride on a scenic outdoor path or track, demonstrating good running form: upright posture, relaxed shoulders, mid-foot strike occurring under the hip, fluid motion. Natural lighting, slightly blurred background suggesting movement. Style: Sports Photography."
+            )
     ]
 }
 
@@ -193,8 +265,8 @@ struct FeatureDetailView: View {
                 //MARK: - Image Placeholder
                 Image(feature.imageName)
                     .resizable()
-                    .scaledToFit()
-                    .frame(height: 250)
+                    .scaledToFill()
+                    .frame(width: size().width, height: 250)
                     .clipped()
                      // ---> Matched Geometry ID for Image <---
                      .matchedGeometryEffect(id: "\(feature.id)_image", in: namespace)

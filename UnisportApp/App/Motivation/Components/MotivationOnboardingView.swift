@@ -63,7 +63,7 @@ struct MotivationOnboardingView: View {
                     }
                 }
             } label: {
-                Text(selectedPageIndex == pages.count - 1 ? "Start" : "Next")
+                Text(selectedPageIndex == pages.count - 1 ? "Share Motivation" : "Next")
                     .font(.headline)
                     .fontWeight(.semibold)
                     .foregroundColor(.black)
